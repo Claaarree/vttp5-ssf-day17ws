@@ -8,10 +8,11 @@
 <body>
     <h1>Currency Exchange</h1>
     <p>
-        <span th:utext="${from}"></span> : <span th:utext="${amount}"></span>
+        <span th:utext="${from.currencyName}"></span>: <span th:utext="${from.currencySymbol + amount}"></span>
     </p>
     <p>
-        <span th:utext="${to}"></span> : <span th:utext="${convertedAmount}"></span>
+        <span th:utext="${to.currencyName}"></span>: <span th:utext="${to.currencySymbol + convertedAmount}"></span>
     </p>
+    <a th:href="@{/}">Click here to do another conversion</a>
 </body>
 </html>

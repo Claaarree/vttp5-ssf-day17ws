@@ -78,5 +78,27 @@ public class CurrencyService {
 
         return conversionRate;
     }
+
+    public Currency getCurrencyFrom(String currencyId) {
+        List<Currency> currencies = getAllCurrencies();
+        Currency from = new Currency();
+        for (Currency c : currencies) {
+            if (c.getCurrencyId().equals(currencyId)) {
+                from = c;
+            }
+        }
+        return from;
+    }
+
+    public Currency getCurrencyTo(String currencyId) {
+        List<Currency> currencies = getAllCurrencies();
+        Currency to = new Currency();
+        for (Currency c : currencies) {
+            if (c.getCurrencyId().equals(currencyId)) {
+                to = c;
+            }
+        }
+        return to;
+    }
     
 }

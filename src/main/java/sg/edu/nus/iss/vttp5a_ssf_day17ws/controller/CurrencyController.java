@@ -37,9 +37,13 @@ public class CurrencyController {
         Double conversionRate = Double.parseDouble(currencyService.getConversion(from, to));
         String convertedAmount = String.valueOf(Double.parseDouble(amount)*conversionRate);
 
-        model.addAllAttributes(form);
-        // model.addAttribute("from", from);
-        // model.addAttribute("amount", amount);
+        Currency fromCurrency = currencyService.getCurrencyFrom(from);
+        Currency toCurrency = currencyService.getCurrencyTo(to);
+
+
+        model.addAttribute("from", fromCurrency);
+        model.addAttribute("to", toCurrency);
+        model.addAttribute("amount", amount);
         model.addAttribute("convertedAmount", convertedAmount);
         
         return "conversion";
