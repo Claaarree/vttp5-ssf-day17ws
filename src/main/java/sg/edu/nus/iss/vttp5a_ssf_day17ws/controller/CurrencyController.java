@@ -26,6 +26,8 @@ public class CurrencyController {
         return "index";
     }
 
+    // nothing wrong with this..
+    // but better to split into post and get mapping
     @GetMapping("/currencyConverter")
     public String showConversion(@RequestParam MultiValueMap<String, String> form, Model model) {
         // System.out.println("requestParam: " + from);
@@ -37,8 +39,8 @@ public class CurrencyController {
         Double conversionRate = Double.parseDouble(currencyService.getConversion(from, to));
         String convertedAmount = String.valueOf(Double.parseDouble(amount)*conversionRate);
 
-        Currency fromCurrency = currencyService.getCurrencyFrom(from);
-        Currency toCurrency = currencyService.getCurrencyTo(to);
+        Currency fromCurrency = currencyService.getCurrencyById(from);
+        Currency toCurrency = currencyService.getCurrencyById(to);
 
 
         model.addAttribute("from", fromCurrency);
